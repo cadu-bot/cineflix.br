@@ -1,0 +1,211 @@
+/cinetv-pro
+ ├── index.html
+ ├── style.css
+ └── script.js
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineTV Premium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1 class="logo">CineTV</h1>
+  <nav>
+    <a href="#vantagens">Vantagens</a>
+    <a href="#planos">Planos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h2>Streaming Premium Sem Travamentos</h2>
+    <p>Filmes, séries e canais ao vivo em HD e 4K</p>
+    <a href="#" onclick="whatsapp()" class="btn">TESTE GRÁTIS AGORA</a>
+  </div>
+</section>
+
+<section id="vantagens" class="section">
+  <h2>Por que escolher a CineTV?</h2>
+  <div class="grid">
+    <div class="box">
+      <h3>+10.000 Conteúdos</h3>
+      <p>Atualizados todos os dias</p>
+    </div>
+    <div class="box">
+      <h3>Sem Travamentos</h3>
+      <p>Servidores de alta qualidade</p>
+    </div>
+    <div class="box">
+      <h3>Suporte 24h</h3>
+      <p>Atendimento rápido</p>
+    </div>
+  </div>
+</section>
+
+<section id="planos" class="section dark">
+  <h2>Escolha seu plano</h2>
+  <div class="grid">
+    <div class="card destaque">
+      <h3>Mensal</h3>
+      <p class="price">R$25</p>
+      <button onclick="whatsapp()">Assinar</button>
+    </div>
+
+    <div class="card">
+      <h3>Trimestral</h3>
+      <p class="price">R$60</p>
+      <button onclick="whatsapp()">Assinar</button>
+    </div>
+
+    <div class="card">
+      <h3>Anual</h3>
+      <p class="price">R$200</p>
+      <button onclick="whatsapp()">Assinar</button>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="section">
+  <h2>Atendimento rápido</h2>
+  <p>Fale agora com nosso suporte</p>
+  <a href="#" onclick="whatsapp()" class="btn">CHAMAR NO WHATSAPP</a>
+</section>
+
+<footer>
+  <p>© 2026 CineTV Premium</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+  position: fixed;
+  width: 100%;
+}
+
+.logo {
+  color: #e50914;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  animation: fadeIn 2s;
+}
+
+.hero h2 {
+  font-size: 40px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background: #e50914;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.dark {
+  background: #111;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.box, .card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.box:hover, .card:hover {
+  transform: scale(1.05);
+}
+
+.price {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.destaque {
+  border: 2px solid #e50914;
+}
+
+button {
+  padding: 10px 20px;
+  background: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: black;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+function whatsapp() {
+  const numero = "5511999999999"; // coloque seu número aqui
+  const mensagem = "Quero testar a CineTV agora!";
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  
+  window.open(url, "_blank");
+}
