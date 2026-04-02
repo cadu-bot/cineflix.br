@@ -156,18 +156,20 @@ header h1 {
 
   <h2 style="margin-left:20px;">Populares</h2>
 
-  <div class="row">
-    <img src="img/it-welcome.jpg">
-    <img src="img/demon-slayer.jpg">
-    <img src="img/stranger-things.jpg">
-    <img src="img/the-last-of-us.jpg">
-    <img src="img/the-boys.jpg">
-    <img src="img/breaking-bed.jpg">
-    <img src="img/panico-6.jpg">
-    <img src="img/my-hero-academy.jpg">
-    <img src="img/quarteto.jpg">
-    <img src="img/deadpool.jpg">
-  </div>
+ <div class="row">
+
+  <img src="img/it-welcome.jpg" onclick="abrirLink('it')">
+  <img src="img/demon-slayer.jpg" onclick="abrirLink('demon')">
+  <img src="img/stranger-things.jpg" onclick="abrirLink('stranger')">
+  <img src="img/the-last-of-us.jpg" onclick="abrirLink('lastofus')">
+  <img src="img/the-boys.jpg" onclick="abrirLink('boys')">
+  <img src="img/breaking-bed.jpg" onclick="abrirLink('breaking')">
+  <img src="img/panico-6.jpg" onclick="abrirLink('panico')">
+  <img src="img/my-hero-academy.jpg" onclick="abrirLink('myhero')">
+  <img src="img/quarteto.jpg" onclick="abrirLink('quarteto')">
+  <img src="img/deadpool.jpg" onclick="abrirLink('deadpool')">
+
+</div>
 
 </section>
 
@@ -203,11 +205,11 @@ header h1 {
   <div class="row">
 
     <!-- 🔥 CADA IMAGEM AGORA TEM LINK -->
-    <img src="img/sport1.jpg" onclick="esporte('ESPN')">
-    <img src="img/sport2.jpg" onclick="esporte('Sportv')">
-    <img src="img/sport3.jpg" onclick="esporte('Premiere')">
-    <img src="img/sport4.jpg" onclick="esporte('Fox')">
-    <img src="img/sport5.jpg" onclick="esporte('Combate')">
+    <img src="img/espn.png" onclick="esporte('ESPN')">
+    <img src="img/spotv.jpg" onclick="esporte('Sportv')">
+    <img src="img/premere.png" onclick="esporte('Premiere')">
+    <img src="img/fox.png" onclick="esporte('Fox')">
+    <img src="img/combate.jpg" onclick="esporte('Combate')">
 
   </div>
 
@@ -231,11 +233,41 @@ header h1 {
 
 <script>
 
-/* ===== LINKS DOS PLANOS ===== */
-function plano(tipo) {
+/* ===== LINKS DOS PLANOS e OUTROS ===== */
+  function esporte(tipo) {
 
   let url = "";
 
+  if (tipo === "ESPN") {
+    url = "https://www.espn.com.br";
+  }
+
+  if (tipo === "Sportv") {
+    url = "https://sportv.globo.com/site/index.html";
+  }
+
+  if (tipo === "Premiere") {
+    url = "https://globoplay.globo.com/assine/premiere/?produto=PM,na,na&origemId=1571&utm_source=google&utm_medium=cpc&utm_campaign=google_externa_perf_search_web_premiere_premiere_na_esporte_ic-institucional-brand&utm_content=premiere_na_esporte_perf_google_search_na_termos-brand-brasileirao-2026_na_premiere&gad_source=1&gad_campaignid=20984362751&gclid=Cj0KCQjwp7jOBhDGARIsABe7C4eRisaOXP5-Ranj8EtHrW_T87A5YYzJHQP1FP7J-XRhntEraHkmgFkaAmppEALw_wcB";
+  }
+
+  if (tipo === "Fox") {
+    url = "https://www.foxsports.com";
+  }
+
+  if (tipo === "Combate") {
+    url = "https://combate.globo.com";
+  }
+
+  if (tipo === "geral") {
+    url = "https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
+  }
+
+  window.open(url, "_blank");
+}
+function plano(tipo) {
+  
+
+  let url = "";
   if (tipo === "Mensal") {
     url = "https://go.atomopay.com.br/jgeam?affh=60h153pk5w";
   }
@@ -250,7 +282,52 @@ function plano(tipo) {
 
   window.open(url, "_blank");
 }
+function abrirLink(tipo) {
 
+  let url = "";
+
+  if (tipo === "it") {
+    url = "https://www.adorocinema.com/series/serie-31593/";
+  }
+
+  if (tipo === "demon") {
+    url = "https://www.adorocinema.com/series/serie-25661/";
+  }
+
+  if (tipo === "stranger") {
+    url = "https://www.adorocinema.com/series/serie-19156/";
+  }
+
+  if (tipo === "lastofus") {
+    url = "https://www.adorocinema.com/series/serie-26316/";
+  }
+
+  if (tipo === "boys") {
+    url = "https://www.adorocinema.com/series/serie-22668/";
+  }
+
+  if (tipo === "breaking") {
+    url = "https://www.adorocinema.com/series/serie-3517/";
+  }
+
+  if (tipo === "panico") {
+    url = "https://www.adorocinema.com/filmes/filme-300624/";
+  }
+
+  if (tipo === "myhero") {
+    url = "https://www.adorocinema.com/series/serie-22113/";
+  }
+
+  if (tipo === "quarteto") {
+    url = "https://www.adorocinema.com/filmes/filme-226116/";
+  }
+
+  if (tipo === "deadpool") {
+    url = "https://www.adorocinema.com/filmes/filme-251633/";
+  }
+
+  window.open(url, "_blank");
+}
 </script>
 
 </body>
