@@ -15,84 +15,35 @@ body {
   color: white;
 }
   
-  /* ===== SCROLL ESTILO NETFLIX ===== */
+/* ===== FORÇA O DESLIZE IGUAL NETFLIX ===== */
 .row {
-  display: flex;
-  overflow-x: auto; /* 🔥 ISSO FAZ DESLIZAR */
+  display: flex !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
   gap: 10px;
   padding: 20px;
-  scroll-behavior: smooth;
+
+  /* 🔥 ESSENCIAL */
+  flex-wrap: nowrap !important;
 }
 
-/* ESCONDE BARRA (mais bonito) */
+/* ESCONDE BARRA */
 .row::-webkit-scrollbar {
   display: none;
 }
 
 /* IMAGENS */
 .row img {
-  width: 160px;
-  border-radius: 5px;
-  transition: 0.3s;
+  width: 180px;
+
+  /* 🔥 ISSO É O SEGREDO */
+  flex: 0 0 auto;
+
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* HOVER */
 .row img:hover {
-  transform: scale(1.1);
-}
-/* ===== SEÇÃO ESPORTES ESTILO NETFLIX ===== */
-.esportes {
-  position: relative;
-
-  /* 🔥 OCUPA TELA TODA */
-  min-height: 100vh;
-
-  /* 🔥 IMAGEM DE FUNDO (TROQUE AQUI) */
-  background: url('img/campo.jpg') center center / cover no-repeat;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 🎬 DEGRADÊ ESTILO NETFLIX */
-.esportes::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.9) 30%,
-    rgba(0,0,0,0.6) 60%,
-    rgba(0,0,0,0.3) 100%
-  );
-}
-
-/* 🔥 SOMBRA NAS BORDAS */
-.esportes::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 150px black;
-}
-
-/* CONTEÚDO NA FRENTE */
-.esportes-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-/* IMAGENS */
-.esportes .row img {
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* HOVER */
-.esportes .row img:hover {
   transform: scale(1.1);
 }
 /* ===== HEADER ===== */
