@@ -7,22 +7,28 @@
 
 <style>
 
-/* ===== CONFIG GERAL ===== */
-body {
+/* ===== RESET ===== */
+* {
   margin: 0;
-  font-family: Arial;
-  background: black;
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
 }
 
 /* ===== HEADER ===== */
 header {
   position: fixed;
   width: 100%;
-  padding: 20px;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
 }
 
 header h1 {
@@ -35,49 +41,63 @@ header h1 {
   background: url('img/catalogo-popular.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 0 50px;
   position: relative;
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, black, rgba(0,0,0,0.6));
+  inset: 0;
+  background: linear-gradient(to right, black 30%, transparent);
 }
 
 .hero-content {
-  position: relative;
+  max-width: 500px;
   z-index: 2;
 }
 
-/* ===== BOTÕES ===== */
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* ===== BOTÃO ===== */
 .btn {
-  margin-top: 20px;
   padding: 15px 30px;
   background: #e50914;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff1e2d;
 }
 
 /* ===== SEÇÕES ===== */
 .section {
-  padding: 40px 20px;
+  padding: 60px 40px;
 }
 
-/* ===== CARROSSEL (CATÁLOGO + ESPORTES) ===== */
+.section h2 {
+  margin-bottom: 10px;
+}
+
+/* ===== CARROSSEL ===== */
 .row {
   display: flex;
   overflow-x: auto;
-  overflow-y: hidden;
-  gap: 10px;
-  padding: 20px;
-  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 20px 0;
   scroll-behavior: smooth;
 }
 
@@ -88,40 +108,50 @@ header h1 {
 .row img {
   width: 180px;
   flex: 0 0 auto;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 6px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .row img:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 /* ===== PLANOS ===== */
-.planos {
-  text-align: center;
-}
-
 .planos-container {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 30px;
 }
 
 .card {
-  background: #1a1a1a;
+  background: #111;
   padding: 25px;
-  width: 250px;
+  width: 260px;
   border-radius: 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 26px;
+  margin-bottom: 15px;
 }
 
 .destaque {
-  border: 2px solid red;
+  border: 2px solid #e50914;
 }
 
-/* ===== ESPORTES FUNDO NETFLIX ===== */
+/* ===== ESPORTES ===== */
 .esportes {
   position: relative;
   min-height: 100vh;
@@ -138,6 +168,7 @@ header h1 {
 .esportes-content {
   position: relative;
   z-index: 2;
+  padding: 60px 40px;
 }
 
 /* ===== WHATSAPP ===== */
@@ -146,11 +177,22 @@ header h1 {
   bottom: 20px;
   right: 20px;
   background: #25D366;
-  padding: 15px 20px;
+  padding: 14px 18px;
   border-radius: 50px;
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   font-weight: bold;
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width:768px){
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .row img {
+    width: 140px;
+  }
 }
 
 </style>
@@ -162,6 +204,7 @@ header h1 {
   <h1>CineTV</h1>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Streaming Premium</h1>
@@ -175,7 +218,7 @@ header h1 {
 
 <!-- CATÁLOGO -->
 <section class="section">
-  <h2 style="margin-left:20px;">Populares</h2>
+  <h2>Populares</h2>
 
   <div class="row">
     <img src="img/it-welcome.jpg" onclick="abrirLink('it')">
@@ -192,36 +235,38 @@ header h1 {
 </section>
 
 <!-- PLANOS -->
-<section class="section planos">
-  <h2>Escolha seu Plano</h2>
+<section class="section">
+  <h2 style="text-align:center;">Escolha seu Plano</h2>
 
   <div class="planos-container">
+
     <div class="card">
       <h3>Mensal</h3>
       <p>R$24,90</p>
-      <button onclick="plano('Mensal')">Assinar</button>
+      <button class="btn" onclick="plano('Mensal')">Assinar</button>
     </div>
 
     <div class="card">
       <h3>Semestral</h3>
       <p>R$69,90</p>
-      <button onclick="plano('Semestral')">Assinar</button>
+      <button class="btn" onclick="plano('Semestral')">Assinar</button>
     </div>
 
     <div class="card destaque">
       <h3>Anual</h3>
       <p>R$97</p>
-      <button onclick="plano('Anual')">Assinar</button>
+      <button class="btn" onclick="plano('Anual')">Assinar</button>
     </div>
+
   </div>
 </section>
 
 <!-- ESPORTES -->
-<section class="section esportes">
+<section class="esportes">
 
   <div class="esportes-content">
 
-    <h2 style="margin-left:20px;">Canais Esportivos</h2>
+    <h2>Canais Esportivos</h2>
 
     <div class="row">
       <img src="img/espn.png" onclick="esporte('ESPN')">
@@ -244,56 +289,51 @@ header h1 {
 
 </section>
 
+<!-- WHATSAPP -->
 <a class="whatsapp" href="https://chat.whatsapp.com/F89jDDNw3BaEu9xXlL19z6" target="_blank">
   💬 Suporte
 </a>
 
 <script>
 
-/* LINKS ESPORTES */
-function esporte(tipo) {
-  let url = "";
-
-  if (tipo === "ESPN") url = "https://www.espn.com.br";
-  if (tipo === "Sportv") url = "https://sportv.globo.com";
-  if (tipo === "Premiere") url = "https://globoplay.globo.com";
-  if (tipo === "Fox") url = "https://www.foxsports.com";
-  if (tipo === "Combate") url = "https://combate.globo.com";
-  if (tipo === "dt") url = "https://pt.wikipedia.org/wiki/Discovery_Turbo";
-  if (tipo === "dc") url = "https://discoverychannel.com.pt";
-  if (tipo === "bs") url = "https://bandsports.uol.com.br";
-  if (tipo === "geral") url = "https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
-
-  window.open(url, "_blank");
+/* ESPORTES */
+function esporte(tipo){
+  let url="";
+  if(tipo==="ESPN") url="https://www.espn.com.br";
+  if(tipo==="Sportv") url="https://sportv.globo.com";
+  if(tipo==="Premiere") url="https://globoplay.globo.com";
+  if(tipo==="Fox") url="https://www.foxsports.com";
+  if(tipo==="Combate") url="https://combate.globo.com";
+  if(tipo==="dt") url="https://pt.wikipedia.org/wiki/Discovery_Turbo";
+  if(tipo==="dc") url="https://discoverychannel.com.pt";
+  if(tipo==="bs") url="https://bandsports.uol.com.br";
+  if(tipo==="geral") url="https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
+  window.open(url,"_blank");
 }
 
 /* PLANOS */
-function plano(tipo) {
-  let url = "";
-
-  if (tipo === "Mensal") url = "https://go.atomopay.com.br/jgeam?affh=60h153pk5w";
-  if (tipo === "Semestral") url = "https://go.atomopay.com.br/mruuv?affh=60h153pk5w";
-  if (tipo === "Anual") url = "https://go.atomopay.com.br/cnjz2?affh=60h153pk5w";
-
-  window.open(url, "_blank");
+function plano(tipo){
+  let url="";
+  if(tipo==="Mensal") url="https://go.atomopay.com.br/jgeam?affh=60h153pk5w";
+  if(tipo==="Semestral") url="https://go.atomopay.com.br/mruuv?affh=60h153pk5w";
+  if(tipo==="Anual") url="https://go.atomopay.com.br/cnjz2?affh=60h153pk5w";
+  window.open(url,"_blank");
 }
 
 /* CATÁLOGO */
-function abrirLink(tipo) {
-  let url = "";
-
-  if (tipo === "it") url = "https://www.adorocinema.com/series/serie-31593/";
-  if (tipo === "demon") url = "https://www.adorocinema.com/series/serie-25661/";
-  if (tipo === "stranger") url = "https://www.adorocinema.com/series/serie-19156/";
-  if (tipo === "lastofus") url = "https://www.adorocinema.com/series/serie-26316/";
-  if (tipo === "boys") url = "https://www.adorocinema.com/series/serie-22668/";
-  if (tipo === "breaking") url = "https://www.adorocinema.com/series/serie-3517/";
-  if (tipo === "panico") url = "https://www.adorocinema.com/filmes/filme-300624/";
-  if (tipo === "myhero") url = "https://www.adorocinema.com/series/serie-22113/";
-  if (tipo === "quarteto") url = "https://www.adorocinema.com/filmes/filme-226116/";
-  if (tipo === "deadpool") url = "https://www.adorocinema.com/filmes/filme-251633/";
-
-  window.open(url, "_blank");
+function abrirLink(tipo){
+  let url="";
+  if(tipo==="it") url="https://www.adorocinema.com/series/serie-31593/";
+  if(tipo==="demon") url="https://www.adorocinema.com/series/serie-25661/";
+  if(tipo==="stranger") url="https://www.adorocinema.com/series/serie-19156/";
+  if(tipo==="lastofus") url="https://www.adorocinema.com/series/serie-26316/";
+  if(tipo==="boys") url="https://www.adorocinema.com/series/serie-22668/";
+  if(tipo==="breaking") url="https://www.adorocinema.com/series/serie-3517/";
+  if(tipo==="panico") url="https://www.adorocinema.com/filmes/filme-300624/";
+  if(tipo==="myhero") url="https://www.adorocinema.com/series/serie-22113/";
+  if(tipo==="quarteto") url="https://www.adorocinema.com/filmes/filme-226116/";
+  if(tipo==="deadpool") url="https://www.adorocinema.com/filmes/filme-251633/";
+  window.open(url,"_blank");
 }
 
 </script>
