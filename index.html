@@ -306,9 +306,9 @@ header h1 {
     <img src="img/premere.png" onclick="esporte('Premiere')">
     <img src="img/fox.png" onclick="esporte('Fox')">
     <img src="img/combate.jpg" onclick="esporte('Combate')">
-    <img src="img/combate.jpg" onclick="esporte('Combate')">
-     <img src="img/combate.jpg" onclick="esporte('Combate')">
-     <img src="img/combate.jpg" onclick="esporte('Combate')">
+    <img src="img/discovery-turbo.jpg" onclick="esporte('dt')">
+     <img src="img/Discovery-channel.jpg" onclick="esporte('dc')">
+     <img src="img/band-e-bandsports.png" onclick="esporte('bs')">
   </div>
 
   <!-- BOTÃO GERAL -->
@@ -355,7 +355,16 @@ header h1 {
   if (tipo === "Combate") {
     url = "https://combate.globo.com";
   }
-
+ if (tipo === "dt") {
+    url = "https://pt.wikipedia.org/wiki/Discovery_Turbo";
+  }
+     if (tipo === "dc") {
+    url = "https://discoverychannel.com.pt";
+  }
+     if (tipo === "bs") {
+    url = "https://bandsports.uol.com.br";
+  }
+    
   if (tipo === "geral") {
     url = "https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
   }
