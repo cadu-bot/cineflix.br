@@ -14,38 +14,7 @@ body {
   background: black;
   color: white;
 }
-  
-/* ===== FORÇA O DESLIZE IGUAL NETFLIX ===== */
-.row {
-  display: flex !important;
-  overflow-x: auto !important;
-  overflow-y: hidden;
-  gap: 10px;
-  padding: 20px;
 
-  /* 🔥 ESSENCIAL */
-  flex-wrap: nowrap !important;
-}
-
-/* ESCONDE BARRA */
-.row::-webkit-scrollbar {
-  display: none;
-}
-
-/* IMAGENS */
-.row img {
-  width: 180px;
-
-  /* 🔥 ISSO É O SEGREDO */
-  flex: 0 0 auto;
-
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.row img:hover {
-  transform: scale(1.1);
-}
 /* ===== HEADER ===== */
 header {
   position: fixed;
@@ -59,19 +28,6 @@ header {
 header h1 {
   color: #e50914;
 }
-  /* ===== SCROLL FUNCIONANDO ===== */
-.row {
-  display: flex;
-  overflow-x: auto !important; /* 🔥 FORÇA FUNCIONAR */
-  gap: 10px;
-  padding: 20px;
-}
-
-.row img {
-  width: 180px;
-  flex-shrink: 0; /* 🔥 ESSENCIAL PRO DESLIZE */
-  cursor: pointer;
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -84,7 +40,6 @@ header h1 {
   position: relative;
 }
 
-/* ESCURECIMENTO */
 .hero::after {
   content: "";
   position: absolute;
@@ -110,21 +65,31 @@ header h1 {
   border-radius: 5px;
 }
 
-/* ===== CATÁLOGO ===== */
+/* ===== SEÇÕES ===== */
 .section {
   padding: 40px 20px;
 }
 
+/* ===== CARROSSEL (CATÁLOGO + ESPORTES) ===== */
 .row {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   gap: 10px;
   padding: 20px;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
 }
 
 .row img {
-  width: 160px;
+  width: 180px;
+  flex: 0 0 auto;
   border-radius: 5px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -156,6 +121,25 @@ header h1 {
   border: 2px solid red;
 }
 
+/* ===== ESPORTES FUNDO NETFLIX ===== */
+.esportes {
+  position: relative;
+  min-height: 100vh;
+  background: url('img/esportes-bg.jpg') center/cover no-repeat;
+}
+
+.esportes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, black, rgba(0,0,0,0.6));
+}
+
+.esportes-content {
+  position: relative;
+  z-index: 2;
+}
+
 /* ===== WHATSAPP ===== */
 .whatsapp {
   position: fixed;
@@ -174,56 +158,44 @@ header h1 {
 
 <body>
 
-<!-- HEADER -->
 <header>
   <h1>CineTV</h1>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-
     <h1>Streaming Premium</h1>
     <p>Filmes, séries e canais ao vivo em HD</p>
 
-    <!-- BOTÃO PROMOÇÃO -->
     <button class="btn" onclick="window.open('https://go.atomopay.com.br/wwdiz?affh=60h153pk5w')">
-          PROMOÇÃO!
-  COMPRE 1 ANO E GANHE OUTRO!
+      PROMOÇÃO! COMPRE 1 ANO E GANHE OUTRO!
     </button>
-
   </div>
 </section>
 
 <!-- CATÁLOGO -->
 <section class="section">
-
   <h2 style="margin-left:20px;">Populares</h2>
 
- <div class="row">
-
-  <img src="img/it-welcome.jpg" onclick="abrirLink('it')">
-  <img src="img/demon-slayer.jpg" onclick="abrirLink('demon')">
-  <img src="img/stranger-things.jpg" onclick="abrirLink('stranger')">
-  <img src="img/the-last-of-us.jpg" onclick="abrirLink('lastofus')">
-  <img src="img/the-boys.jpg" onclick="abrirLink('boys')">
-  <img src="img/breaking-bed.jpg" onclick="abrirLink('breaking')">
-  <img src="img/panico-6.jpg" onclick="abrirLink('panico')">
-  <img src="img/my-hero-academy.jpg" onclick="abrirLink('myhero')">
-  <img src="img/quarteto.jpg" onclick="abrirLink('quarteto')">
-  <img src="img/deadpool.jpg" onclick="abrirLink('deadpool')">
-
-</div>
-
+  <div class="row">
+    <img src="img/it-welcome.jpg" onclick="abrirLink('it')">
+    <img src="img/demon-slayer.jpg" onclick="abrirLink('demon')">
+    <img src="img/stranger-things.jpg" onclick="abrirLink('stranger')">
+    <img src="img/the-last-of-us.jpg" onclick="abrirLink('lastofus')">
+    <img src="img/the-boys.jpg" onclick="abrirLink('boys')">
+    <img src="img/breaking-bed.jpg" onclick="abrirLink('breaking')">
+    <img src="img/panico-6.jpg" onclick="abrirLink('panico')">
+    <img src="img/my-hero-academy.jpg" onclick="abrirLink('myhero')">
+    <img src="img/quarteto.jpg" onclick="abrirLink('quarteto')">
+    <img src="img/deadpool.jpg" onclick="abrirLink('deadpool')">
+  </div>
 </section>
 
 <!-- PLANOS -->
 <section class="section planos">
-
   <h2>Escolha seu Plano</h2>
 
   <div class="planos-container">
-
     <div class="card">
       <h3>Mensal</h3>
       <p>R$24,90</p>
@@ -241,151 +213,89 @@ header h1 {
       <p>R$97</p>
       <button onclick="plano('Anual')">Assinar</button>
     </div>
-    <!-- ===== CANAIS ESPORTIVOS ===== -->
+  </div>
+</section>
+
+<!-- ESPORTES -->
 <section class="section esportes">
 
   <div class="esportes-content">
 
     <h2 style="margin-left:20px;">Canais Esportivos</h2>
 
+    <div class="row">
+      <img src="img/espn.png" onclick="esporte('ESPN')">
+      <img src="img/sportv.jpg" onclick="esporte('Sportv')">
+      <img src="img/premere.png" onclick="esporte('Premiere')">
+      <img src="img/fox.png" onclick="esporte('Fox')">
+      <img src="img/combate.jpg" onclick="esporte('Combate')">
+      <img src="img/discovery-turbo.jpg" onclick="esporte('dt')">
+      <img src="img/Discovery-channel.jpg" onclick="esporte('dc')">
+      <img src="img/band-e-bandsports.png" onclick="esporte('bs')">
+    </div>
 
-  <div class="row">
-
-    <!-- 🔥 CADA IMAGEM AGORA TEM LINK -->
-    <img src="img/espn.png" onclick="esporte('ESPN')">
-    <img src="img/sportv.jpg" onclick="esporte('Sportv')">
-    <img src="img/premere.png" onclick="esporte('Premiere')">
-    <img src="img/fox.png" onclick="esporte('Fox')">
-    <img src="img/combate.jpg" onclick="esporte('Combate')">
-    <img src="img/discovery-turbo.jpg" onclick="esporte('dt')">
-     <img src="img/Discovery-channel.jpg" onclick="esporte('dc')">
-     <img src="img/band-e-bandsports.png" onclick="esporte('bs')">
-  </div>
-
-  <!-- BOTÃO GERAL -->
-  <div style="text-align:center; margin-top:20px;">
-    <button class="btn" onclick="esporte('geral')">
-      ASSISTIR ESPORTES AGORA
-    </button>
-  </div>
-
-</section>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn" onclick="esporte('geral')">
+        ASSISTIR ESPORTES AGORA
+      </button>
+    </div>
 
   </div>
 
 </section>
 
-<!-- WHATSAPP -->
 <a class="whatsapp" href="https://chat.whatsapp.com/F89jDDNw3BaEu9xXlL19z6" target="_blank">
   💬 Suporte
 </a>
 
 <script>
 
-/* ===== LINKS DOS PLANOS e OUTROS ===== */
-  function esporte(tipo) {
-
+/* LINKS ESPORTES */
+function esporte(tipo) {
   let url = "";
 
-  if (tipo === "ESPN") {
-    url = "https://www.espn.com.br";
-  }
-
-  if (tipo === "Sportv") {
-    url = "https://sportv.globo.com/site/index.html";
-  }
-
-  if (tipo === "Premiere") {
-    url = "https://globoplay.globo.com/assine/premiere/?produto=PM,na,na&origemId=1571&utm_source=google&utm_medium=cpc&utm_campaign=google_externa_perf_search_web_premiere_premiere_na_esporte_ic-institucional-brand&utm_content=premiere_na_esporte_perf_google_search_na_termos-brand-brasileirao-2026_na_premiere&gad_source=1&gad_campaignid=20984362751&gclid=Cj0KCQjwp7jOBhDGARIsABe7C4eRisaOXP5-Ranj8EtHrW_T87A5YYzJHQP1FP7J-XRhntEraHkmgFkaAmppEALw_wcB";
-  }
-
-  if (tipo === "Fox") {
-    url = "https://www.foxsports.com";
-  }
-
-  if (tipo === "Combate") {
-    url = "https://combate.globo.com";
-  }
- if (tipo === "dt") {
-    url = "https://pt.wikipedia.org/wiki/Discovery_Turbo";
-  }
-     if (tipo === "dc") {
-    url = "https://discoverychannel.com.pt";
-  }
-     if (tipo === "bs") {
-    url = "https://bandsports.uol.com.br";
-  }
-    
-  if (tipo === "geral") {
-    url = "https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
-  }
+  if (tipo === "ESPN") url = "https://www.espn.com.br";
+  if (tipo === "Sportv") url = "https://sportv.globo.com";
+  if (tipo === "Premiere") url = "https://globoplay.globo.com";
+  if (tipo === "Fox") url = "https://www.foxsports.com";
+  if (tipo === "Combate") url = "https://combate.globo.com";
+  if (tipo === "dt") url = "https://pt.wikipedia.org/wiki/Discovery_Turbo";
+  if (tipo === "dc") url = "https://discoverychannel.com.pt";
+  if (tipo === "bs") url = "https://bandsports.uol.com.br";
+  if (tipo === "geral") url = "https://go.atomopay.com.br/wwdiz?affh=60h153pk5w";
 
   window.open(url, "_blank");
 }
+
+/* PLANOS */
 function plano(tipo) {
-  
-
   let url = "";
-  if (tipo === "Mensal") {
-    url = "https://go.atomopay.com.br/jgeam?affh=60h153pk5w";
-  }
 
-  if (tipo === "Semestral") {
-    url = "https://go.atomopay.com.br/mruuv?affh=60h153pk5w";
-  }
-
-  if (tipo === "Anual") {
-    url = "https://go.atomopay.com.br/cnjz2?affh=60h153pk5w";
-  }
+  if (tipo === "Mensal") url = "https://go.atomopay.com.br/jgeam?affh=60h153pk5w";
+  if (tipo === "Semestral") url = "https://go.atomopay.com.br/mruuv?affh=60h153pk5w";
+  if (tipo === "Anual") url = "https://go.atomopay.com.br/cnjz2?affh=60h153pk5w";
 
   window.open(url, "_blank");
 }
+
+/* CATÁLOGO */
 function abrirLink(tipo) {
-
   let url = "";
 
-  if (tipo === "it") {
-    url = "https://www.adorocinema.com/series/serie-31593/";
-  }
-
-  if (tipo === "demon") {
-    url = "https://www.adorocinema.com/series/serie-25661/";
-  }
-
-  if (tipo === "stranger") {
-    url = "https://www.adorocinema.com/series/serie-19156/";
-  }
-
-  if (tipo === "lastofus") {
-    url = "https://www.adorocinema.com/series/serie-26316/";
-  }
-
-  if (tipo === "boys") {
-    url = "https://www.adorocinema.com/series/serie-22668/";
-  }
-
-  if (tipo === "breaking") {
-    url = "https://www.adorocinema.com/series/serie-3517/";
-  }
-
-  if (tipo === "panico") {
-    url = "https://www.adorocinema.com/filmes/filme-300624/";
-  }
-
-  if (tipo === "myhero") {
-    url = "https://www.adorocinema.com/series/serie-22113/";
-  }
-
-  if (tipo === "quarteto") {
-    url = "https://www.adorocinema.com/filmes/filme-226116/";
-  }
-
-  if (tipo === "deadpool") {
-    url = "https://www.adorocinema.com/filmes/filme-251633/";
-  }
+  if (tipo === "it") url = "https://www.adorocinema.com/series/serie-31593/";
+  if (tipo === "demon") url = "https://www.adorocinema.com/series/serie-25661/";
+  if (tipo === "stranger") url = "https://www.adorocinema.com/series/serie-19156/";
+  if (tipo === "lastofus") url = "https://www.adorocinema.com/series/serie-26316/";
+  if (tipo === "boys") url = "https://www.adorocinema.com/series/serie-22668/";
+  if (tipo === "breaking") url = "https://www.adorocinema.com/series/serie-3517/";
+  if (tipo === "panico") url = "https://www.adorocinema.com/filmes/filme-300624/";
+  if (tipo === "myhero") url = "https://www.adorocinema.com/series/serie-22113/";
+  if (tipo === "quarteto") url = "https://www.adorocinema.com/filmes/filme-226116/";
+  if (tipo === "deadpool") url = "https://www.adorocinema.com/filmes/filme-251633/";
 
   window.open(url, "_blank");
 }
+
 </script>
 
 </body>
