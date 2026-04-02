@@ -14,22 +14,26 @@ body {
   background: black;
   color: white;
 }
-/* ===== FUNDO ESTILO NETFLIX ===== */
+/* ===== SEÇÃO ESPORTES ESTILO NETFLIX ===== */
 .esportes {
   position: relative;
-  padding: 80px 20px;
 
-  /* IMAGEM DE FUNDO */
-  background: url('img/campo.jpg') center/cover no-repeat;
+  /* 🔥 OCUPA TELA TODA */
+  min-height: 100vh;
+
+  /* 🔥 IMAGEM DE FUNDO (TROQUE AQUI) */
+  background: url('img/campo.jpg') center center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* CAMADA ESCURA + DEGRADÊ */
+/* 🎬 DEGRADÊ ESTILO NETFLIX */
 .esportes::before {
   content: "";
   position: absolute;
   inset: 0;
-
-  /* 🔥 SEGREDO DO EFEITO NETFLIX */
   background: linear-gradient(
     to top,
     rgba(0,0,0,1) 0%,
@@ -39,7 +43,7 @@ body {
   );
 }
 
-/* LEVE SOMBRA NAS BORDAS */
+/* 🔥 SOMBRA NAS BORDAS */
 .esportes::after {
   content: "";
   position: absolute;
@@ -51,6 +55,18 @@ body {
 .esportes-content {
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+/* IMAGENS */
+.esportes .row img {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.esportes .row img:hover {
+  transform: scale(1.1);
 }
 /* ===== HEADER ===== */
 header {
