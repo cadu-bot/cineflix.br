@@ -5,86 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CineFlix Premium</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0b0b0b;
-      color: white;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-      background: black;
-      position: fixed;
-      width: 100%;
-    }
-
-    header h1 {
-      color: red;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-    }
-
-.hero {
+<div style="
   height: 100vh;
-  background: url('img/capa_fundo_netflix.jpg') center/cover;
+  background: url('img/catalogo-popular.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-}
+  color: white;
+  text-align: center;
+">
 
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  top: 0;
-  left: 0;
-}
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
+  <!-- ESCURECIMENTO -->
+  <div style="
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, black, rgba(0,0,0,0.6));
+    top: 0;
+    left: 0;
+  "></div>
 
-    .grid {
-      display: flex;
-      gap: 15px;
-      overflow-x: auto;
-      padding: 20px;
-    }
+  <!-- CONTEÚDO INTERATIVO -->
+  <div style="position: relative; z-index: 2;">
+    
+    <h1 style="font-size: 50px;">Streaming Premium</h1>
+    <p>Filmes, séries e canais ao vivo</p>
 
-    .grid img {
-      width: 200px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .grid img:hover {
-      transform: scale(1.1);
-    }
-
-    .btn {
-      display: inline-block;
+    <!-- BOTÃO -->
+    <button onclick="window.open('https://go.atomopay.com.br/wwdiz?affh=60h153pk5w')" style="
       margin-top: 20px;
       padding: 15px 30px;
-      background: red;
+      background: #e50914;
+      border: none;
       color: white;
-      text-decoration: none;
+      font-size: 18px;
       cursor: pointer;
-    }
+    ">
+      PROMOÇÃO! COMPRE 1 ANO E GANHE OUTRO!
+    </button>
 
-    footer {
-      padding: 20px;
-      text-align: center;
-      background: black;
-    }
-  </style>
+  </div>
+
+</div>
 </head>
 
 <body>
